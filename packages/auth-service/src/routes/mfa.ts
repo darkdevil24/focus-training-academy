@@ -162,4 +162,16 @@ router.post('/backup-codes/regenerate', requireRole(['admin']), async (req, res)
   }
 });
 
+/**
+ * Express router containing Multi-Factor Authentication (MFA) routes.
+ * All routes require authentication and admin role for setup/management.
+ * 
+ * Routes:
+ * - POST /setup - Setup MFA (admin only)
+ * - POST /enable - Enable MFA (admin only)
+ * - POST /verify - Verify MFA token
+ * - POST /disable - Disable MFA (admin only)
+ * - GET /status - Get MFA status
+ * - POST /backup-codes/regenerate - Regenerate backup codes (admin only)
+ */
 export { router as mfaRoutes };

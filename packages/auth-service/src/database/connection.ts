@@ -5,6 +5,19 @@ import { logger } from '../utils/logger';
 let pool: Pool;
 let redis: Redis;
 
+/**
+ * Establishes connections to PostgreSQL and Redis databases.
+ * Configures connection pools and error handling for both services.
+ * 
+ * @throws {Error} When database connection fails
+ * 
+ * @example
+ * ```typescript
+ * import { connectDatabase } from './database/connection';
+ * 
+ * await connectDatabase();
+ * ```
+ */
 export async function connectDatabase(): Promise<void> {
   try {
     // PostgreSQL connection
@@ -48,6 +61,20 @@ export async function connectDatabase(): Promise<void> {
   }
 }
 
+/**
+ * Returns the PostgreSQL connection pool instance.
+ * 
+ * @returns {Pool} PostgreSQL connection pool
+ * @throws {Error} When database is not connected
+ * 
+ * @example
+ * ```typescript
+ * import { getPool } from './database/connection';
+ * 
+ * const pool = getPool();
+ * const result = await pool.query('SELECT * FROM users WHERE id = $1', [userId]);
+ * ```
+ */
 export function getPool(): Pool {
   if (!pool) {
     throw new Error('Database not connected');
@@ -55,6 +82,20 @@ export function getPool(): Pool {
   return pool;
 }
 
+/**
+ * Returns the Redis client instance.
+ * 
+ * @returns {Redis} Redis client instance
+ * @throws {Error} When Redis is not connected
+ * 
+ * @example
+ * ```typescript
+ * import { getRedis } from './database/connection';
+ * 
+ * const redis = getRedis();
+ * await redis.setex('refresh_token:userId', 3600, token);
+ * ```
+ */
 export function getRedis(): Redis {
   if (!redis) {
     throw new Error('Redis not connected');

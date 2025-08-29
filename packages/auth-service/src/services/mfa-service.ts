@@ -253,4 +253,22 @@ class MFAService {
   }
 }
 
+/**
+ * Multi-Factor Authentication service instance providing TOTP setup, verification,
+ * backup code management, and MFA status operations for admin users.
+ * 
+ * @example
+ * ```typescript
+ * import { mfaService } from './services/mfa-service';
+ * 
+ * // Setup MFA for admin user
+ * const setup = await mfaService.setupMFA(userId);
+ * 
+ * // Verify MFA token
+ * const verification = await mfaService.verifyMFA(userId, token);
+ * 
+ * // Get MFA status
+ * const status = await mfaService.getMFAStatus(userId);
+ * ```
+ */
 export const mfaService = new MFAService();

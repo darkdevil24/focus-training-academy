@@ -202,4 +202,16 @@ router.post('/validate', async (req, res) => {
   }
 });
 
+/**
+ * Express router containing all authentication-related routes including
+ * OAuth callbacks, token refresh, logout, and user validation endpoints.
+ * 
+ * Routes:
+ * - GET /google, /microsoft, /facebook, /apple - OAuth initiation
+ * - GET /*/callback - OAuth callback handlers
+ * - POST /refresh - Token refresh
+ * - POST /logout - User logout
+ * - GET /me - Get current user
+ * - POST /validate - Token validation
+ */
 export { router as authRoutes };

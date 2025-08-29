@@ -227,4 +227,22 @@ class AuthService {
   }
 }
 
+/**
+ * Authentication service instance providing OAuth handling, JWT token management,
+ * user session validation, and database operations for user authentication.
+ * 
+ * @example
+ * ```typescript
+ * import { authService } from './services/auth-service';
+ * 
+ * // Handle OAuth callback
+ * const result = await authService.handleOAuthCallback(profile);
+ * 
+ * // Generate tokens
+ * const tokens = await authService.generateTokens(user);
+ * 
+ * // Validate token
+ * const session = await authService.validateToken(payload);
+ * ```
+ */
 export const authService = new AuthService();

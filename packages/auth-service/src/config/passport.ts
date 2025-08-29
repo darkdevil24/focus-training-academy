@@ -6,6 +6,21 @@ import { OAuthProfile, OAuthProvider } from '../types/auth';
 import { authService } from '../services/auth-service';
 import { logger } from '../utils/logger';
 
+/**
+ * Configures Passport.js strategies for OAuth authentication including
+ * Google, Facebook, Microsoft, Apple, and JWT token validation.
+ * 
+ * Sets up serialization/deserialization for session management and
+ * configures OAuth callback handling for all supported providers.
+ * 
+ * @example
+ * ```typescript
+ * import { configurePassport } from './config/passport';
+ * 
+ * // Configure all OAuth strategies
+ * configurePassport();
+ * ```
+ */
 export function configurePassport(): void {
   // Google OAuth Strategy
   if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {

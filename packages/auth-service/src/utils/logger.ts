@@ -1,5 +1,16 @@
 import winston from 'winston';
 
+/**
+ * Winston logger instance configured for the auth service.
+ * Logs to files in production and console in development.
+ * 
+ * @example
+ * ```typescript
+ * import { logger } from './utils/logger';
+ * logger.info('User authenticated successfully');
+ * logger.error('Authentication failed', error);
+ * ```
+ */
 export const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: winston.format.combine(
