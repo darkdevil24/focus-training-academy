@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "Code Review & Documentation Hook",
+  "description": "Automatically checks every new or modified backend API endpoint file for missing JSDoc comments and common security vulnerabilities like lack of input validation",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "backend/src/routes/**/*.ts",
+      "backend/src/routes/**/*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "I need you to analyze the modified API endpoint file and perform two key tasks:\n\n1. **JSDoc Documentation Review**: Examine all functions, methods, and route handlers in the file. Identify any missing JSDoc comments and add comprehensive documentation that includes:\n   - Function/method purpose and description\n   - @param tags for all parameters with types and descriptions\n   - @returns tag describing return values and types\n   - @throws tags for any exceptions that might be thrown\n   - @example tags where helpful\n\n2. **Security Vulnerability Assessment**: Review the code for common security issues including:\n   - Missing input validation and sanitization\n   - Lack of authentication/authorization checks\n   - SQL injection vulnerabilities\n   - XSS prevention measures\n   - Rate limiting considerations\n   - Proper error handling that doesn't leak sensitive information\n   - CORS configuration issues\n\nPlease provide the updated code with added JSDoc comments and a separate section with security improvement suggestions. Follow the TypeScript and security standards defined in our tech.md guidelines."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@focus-academy/kiro-ai-service",
+  "version": "1.0.0",
+  "description": "AI coaching service for Focus Training Academy",
+  "main": "main.py",
+  "scripts": {
+    "dev": "uvicorn main:app --reload --host 0.0.0.0 --port 8001",
+    "start": "uvicorn main:app --host 0.0.0.0 --port 8001",
+    "test": "pytest",
+    "test:watch": "pytest-watch",
+    "lint": "flake8 . && black --check .",
+    "lint:fix": "black . && isort .",
+    "security:scan": "safety check"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

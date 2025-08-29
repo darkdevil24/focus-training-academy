@@ -1,0 +1,58 @@
+{
+  "name": "focus-training-academy",
+  "version": "1.0.0",
+  "description": "A gamified web platform for developing sustained focus skills through AI-powered coaching",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "setup:https": "node scripts/setup-https.js",
+    "dev": "concurrently \"npm run dev:api-gateway\" \"npm run dev:frontend\"",
+    "dev:https": "concurrently \"npm run dev:api-gateway\" \"npm run dev:frontend:https\"",
+    "dev:frontend": "npm run dev --workspace=@focus-academy/frontend",
+    "dev:frontend:https": "npm run dev:https --workspace=@focus-academy/frontend",
+    "dev:api-gateway": "npm run dev --workspace=@focus-academy/api-gateway",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "test:unit": "npm run test:unit --workspaces",
+    "test:integration": "npm run test:integration --workspaces",
+    "test:e2e": "npm run test:e2e --workspace=@focus-academy/frontend",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
+    "format": "prettier --write \"packages/**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"packages/**/*.{ts,tsx,js,jsx,json,md}\"",
+    "db:migrate": "npm run db:migrate --workspace=@focus-academy/api-gateway",
+    "db:rollback": "npm run db:rollback --workspace=@focus-academy/api-gateway",
+    "db:seed": "npm run db:seed --workspace=@focus-academy/api-gateway",
+    "db:migration:create": "npm run db:migration:create --workspace=@focus-academy/api-gateway",
+    "security:scan": "npm audit --workspaces && npm run security:scan --workspaces",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

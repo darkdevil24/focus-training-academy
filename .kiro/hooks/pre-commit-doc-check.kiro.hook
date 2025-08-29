@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Pre-Commit Code Documentation Check",
+  "description": "Before git commits, scan staged files for exported functions or classes without JSDoc/TSDoc comments and prompt user for confirmation",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Code files are being prepared for commit. Please scan the staged files for any exported functions or classes that do not have preceding JSDoc or TSDoc comment blocks. For each undocumented export found, flag it and prompt the user with: 'Warning: The function [functionName] in [fileName] is undocumented. Proceed with commit anyway?' This enforces a 'document-as-you-go' policy for code quality."
+  }
+}
