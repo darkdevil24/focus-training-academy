@@ -15,7 +15,7 @@ A gamified web platform that helps adults develop sustained focus skills through
 
 1. **Clone and install dependencies:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/darkdevil24/focus-training-academy.git
    cd focus-training-academy
    npm install
    ```
@@ -110,8 +110,9 @@ npm run security:scan
 
 ## 📚 Documentation
 
-- [API Documentation](./docs/api.md)
+- [OAuth Setup Guide](./docs/oauth-setup-guide.md)
 - [Development Guide](./docs/development.md)
+- [API Documentation](./docs/api.md)
 - [Deployment Guide](./docs/deployment.md)
 - [Security Guide](./docs/security.md)
 
