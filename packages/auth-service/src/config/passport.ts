@@ -28,14 +28,16 @@ export function configurePassport(): void {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: `${process.env.BASE_URL}/auth/google/callback`,
-      scope: ['profile', 'email']
+      scope: ['profile', 'email', 'openid'],
+      accessType: 'offline',
+      prompt: 'consent'
     }, async (accessToken, refreshToken, profile, done) => {
       try {
         const oauthProfile: OAuthProfile = {
           id: profile.id,
-          email: profile.emails?.[0]?.value || '',
-          name: profile.displayName,
-          picture: profile.photos?.[0]?.value,
+          email: profile.emails?.[0]?.value || profile._json?.email || '',
+          name: profile.displayName || profile._json?.name || `${profile.name?.givenName || ''} ${profile.name?.familyName || ''}`.trim(),
+          picture: profile.photos?.[0]?.value || profile._json?.picture || '',
           provider: 'google'
         };
         

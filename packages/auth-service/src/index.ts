@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import passport from 'passport';
 import { logger } from './utils/logger';
+import { validateEnvironment } from './utils/env-validator';
 import { authRoutes } from './routes/auth';
 import { mfaRoutes } from './routes/mfa';
 import { errorHandler } from './middleware/error-handler';
@@ -54,6 +55,9 @@ app.use(errorHandler);
 // Start server
 async function startServer() {
   try {
+    // Validate environment variables
+    validateEnvironment();
+    
     await connectDatabase();
     
     app.listen(PORT, () => {

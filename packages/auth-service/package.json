@@ -9,6 +9,11 @@
     "start": "node dist/index.js",
     "test": "jest --runInBand",
     "test:watch": "jest --watch --runInBand",
+    "test:unit": "jest --selectProjects unit --runInBand",
+    "test:integration": "jest --selectProjects integration --runInBand",
+    "migrate": "tsx src/scripts/migrate.ts",
+    "migrate:rollback": "tsx src/scripts/rollback.ts",
+    "migrate:create": "tsx src/scripts/create-migration.ts",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "security:scan": "npm audit"
